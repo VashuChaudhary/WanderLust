@@ -1,83 +1,160 @@
 <% layout("/layouts/boilerplate") %>
 
 <style>
-	#filters {
+	.filter-item p {
+		margin: 0;
+		font-size: 0.8rem;
+	}
+
+	#all-filters {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
+		justify-content: space-around;
 	}
-	.filter {
-		text-align: center;
-		margin-right: 2rem;
-		margin-top: 2rem;
-		opacity: 0.7;
+
+	.filter-scrollbar {
+		width: 79%;
+		background-color: #fff;
+		border-bottom: 1px solid #e0e0e0;
+		padding: 10px 0;
+		position: sticky;
+		top: 0;
+		z-index: 100;
 	}
-	.filter:hover {
-		opacity: 1;
-		cursor: pointer;
+
+	.filter-scroll {
+		overflow-x: auto;
+		overflow-y: hidden;
+		white-space: nowrap;
+		padding: 0 15px;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
 	}
-	.filter p {
-		font-size: 0.8rem;
-	}
-	.tax-info {
+
+	.filter-scroll::-webkit-scrollbar {
 		display: none;
 	}
+
+	.filter-item {
+		display: inline-block;
+		padding: 8px 16px;
+		margin-right: 10px;
+		text-decoration: none;
+		color: #666;
+		border: 1px solid #ddd;
+		border-radius: 20px;
+		font-size: 14px;
+		font-weight: 500;
+		transition: all 0.3s ease;
+		white-space: nowrap;
+	}
+
+	.filter-item:hover {
+		background-color: #f0f0f0;
+		border-color: #999;
+	}
+
+	.filter-item.active {
+		background-color: #ff5a5f;
+		color: white;
+		border-color: #ff5a5f;
+	}
+	.tax-info {
+		font-size: 14px;
+		color: #666;
+		margin-top: 5px;
+	}
+
+	@media only screen and (max-width: 768px) {
+		.tax-info {
+			font-size: 12px;
+			margin-top: 3px;
+		}
+	}
+
+	@media only screen and (max-width: 480px) {
+		.tax-info {
+			font-size: 11px;
+			margin-top: 2px;
+			text-align: center;
+		}
+	}
+
+	@media only screen and (max-width: 320px) {
+		.tax-info {
+			font-size: 10px;
+			margin-top: 1px;
+		}
+	}
+
 	.tax-toggle {
+		width: 20%;
 		border: 1px solid black;
 		border-radius: 1rem;
 		height: 3.25rem;
 		padding: 1rem;
-		margin-left: 2rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
+
+	/* Tax button styling */
+	.tax-button {
+		background-color: transparent;
+		border: 1px solid #ddd;
+		padding: 4px 8px;
+		font-size: 12px;
+		color: #666;
+		border-radius: 4px;
+		cursor: pointer;
+		margin-top: 5px;
+		transition: all 0.3s ease;
+	}
+
+	.tax-button:hover {
+		background-color: #f5f5f5;
+		border-color: #999;
+	}
 </style>
 
-<div id="filters">
-	<div class="filter">
-		<div><i class="fa-solid fa-fire"></i></div>
-		<p>Trending</p>
-	</div>
-	<div class="filter">
-		<div><i class="fa-solid fa-bed"></i></div>
-		<p>Rooms</p>
-	</div>
-	<div class="filter">
-		<div><i class="fa-solid fa-mountain-city"></i></div>
-		<p>Iconic Cities</p>
-	</div>
-	<div class="filter">
-		<div><i class="fa-solid fa-mountain"></i></div>
-		<p>Mountains</p>
-	</div>
-	<div class="filter">
-		<div><i class="fa-solid fa-chess-rook"></i></div>
-		<p>Castles</p>
-	</div>
-	<div class="filter">
-		<div><i class="fa-solid fa-person-swimming"></i></div>
-		<p>Amazing Pools</p>
-	</div>
-	<div class="filter">
-		<div><i class="fa-solid fa-tent"></i></div>
-		<p>Camping</p>
-	</div>
-	<div class="filter">
-		<div><i class="fa-solid fa-tractor"></i></div>
-		<p>Farms</p>
-	</div>
-	<div class="filter">
-		<div><i class="fa-solid fa-snowflake"></i></div>
-		<p>Arctic</p>
-	</div>
-	<div class="filter">
-		<div><i class="fa-solid fa-igloo"></i></div>
-		<p>Domes</p>
-	</div>
-	<div class="filter">
-		<div><i class="fa-solid fa-sailboat"></i></div>
-		<p>Boats</p>
+<div id="all-filters">
+	<div class="filter-scrollbar">
+		<div class="filter-scroll">
+			<a href="#trending" class="filter-item active">
+				<p><i class="fa-solid fa-fire"></i>&nbsp;Trending</p></a
+			>
+			<a href="#rooms" class="filter-item">
+				<p><i class="fa-solid fa-bed"></i>&nbsp;Rooms</p>
+			</a>
+			<a href="#iconic-cities" class="filter-item">
+				<p><i class="fa-solid fa-mountain-city"></i>&nbsp;Iconic Cities</p>
+			</a>
+			<a href="#mountains" class="filter-item">
+				<p><i class="fa-solid fa-mountain"></i>&nbsp;Mountains</p>
+			</a>
+			<a href="#castles" class="filter-item">
+				<p><i class="fa-solid fa-chess-rook"></i>&nbsp;Castles</p>
+			</a>
+			<a href="#amazing-pools" class="filter-item"
+				><p><i class="fa-solid fa-person-swimming"></i>&nbsp;Amazing Pools</p>
+			</a>
+			<a href="#camping" class="filter-item"
+				><p><i class="fa-solid fa-tent"></i>&nbsp;Camping</p>
+			</a>
+			<a href="#farms" class="filter-item"
+				><p><i class="fa-solid fa-tractor"></i>&nbsp;Farms</p></a
+			>
+			<a href="#arctic" class="filter-item"
+				><p><i class="fa-solid fa-snowflake"></i>&nbsp;Arctic</p></a
+			>
+			<a href="#domes" class="filter-item"
+				><p><i class="fa-solid fa-igloo"></i>&nbsp;Domes</p></a
+			>
+			<a href="#boats" class="filter-item"
+				><p><i class="fa-solid fa-sailboat"></i>&nbsp;Boats</p></a
+			>
+		</div>
 	</div>
 	<div class="tax-toggle">
 		<div class="form-check-reverse form-switch">
@@ -93,6 +170,7 @@
 		</div>
 	</div>
 </div>
+
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
 	<% for(let listing of allListings){ %>
 	<a href="/listings/<%=listing._id%>" class="listing-link">
@@ -111,7 +189,6 @@
 					<i class="tax-info"> + 18% GST</i>
 					<br />
 				</p>
-				<!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
 			</div>
 		</div>
 	</a>
