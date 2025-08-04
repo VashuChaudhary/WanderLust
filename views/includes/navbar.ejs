@@ -8,13 +8,16 @@
 		<form
 			class="d-flex search-form-mobile d-md-none mx-auto order-2"
 			role="search"
+			action="/listings"
+			method="GET"
 		>
 			<div class="input-group">
 				<input
 					class="form-control search-input"
 					type="search"
 					placeholder="Search"
-					name="search"
+					name="q"
+					value="<%= typeof q !== 'undefined' ? q : '' %>"
 				/>
 				<button class="btn search-btn" type="submit">
 					<i class="fa-solid fa-magnifying-glass"></i>
@@ -38,13 +41,19 @@
 			</div>
 
 			<!-- Desktop Search Form -->
-			<form class="d-none d-md-flex search-form-desktop mx-auto" role="search">
+			<form
+				class="d-none d-md-flex search-form-desktop mx-auto"
+				role="search"
+				action="/listings"
+				method="GET"
+			>
 				<div class="input-group">
 					<input
 						class="form-control search-input"
 						type="search"
 						placeholder="Search destinations"
-						name="search"
+						name="q"
+						value="<%= typeof q !== 'undefined' ? q : '' %>"
 					/>
 					<button class="btn search-btn" type="submit">
 						<i class="fa-solid fa-magnifying-glass"></i>

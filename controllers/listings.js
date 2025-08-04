@@ -1,8 +1,31 @@
 const Listing = require("../models/listing");
 
 module.exports.index = async (req, res) => {
-	const allListings = await Listing.find({});
-	res.render("./listings/index.ejs", { allListings });
+	const { q } = req.query; // Get search query from URL parameters
+	let filter = {};
+	let sort = {};
+
+	if (q && q.trim()) {
+		// Check if search query exists and isn't empty
+		filter = { $text: { $search: q.trim() } };
+		sort = { score: { $meta: "textScore" } };
+	}
+
+	try {
+		const allListings = await Listing.find(
+			filter,
+			q ? { score: { $meta: "textScore" } } : {}
+		).sort(sort);
+
+		res.render("listings/index", {
+			allListings,
+			q: q || "", // Pass search query back to template
+		});
+	} catch (error) {
+		console.error("Search error:", error);
+		req.flash("error", "Something went wrong with the search");
+		res.redirect("/listings");
+	}
 };
 
 module.exports.renderNewForm = (req, res) => {
