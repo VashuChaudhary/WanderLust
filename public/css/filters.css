@@ -1,0 +1,207 @@
+.filter-item p {
+	margin: 0;
+	font-size: 0.8rem;
+}
+
+#all-filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-around;
+	position: relative;
+	z-index: 1050;
+	background-color: #fff;
+	margin-top: 10px;
+	padding: 0 10px;
+}
+
+.filter-scrollbar {
+	width: 75%;
+	background-color: #fff;
+	border-bottom: 1px solid #e0e0e0;
+	padding: 10px 0;
+	position: sticky;
+	top: 0;
+	z-index: 1050;
+}
+
+.filter-scroll {
+	overflow-x: auto;
+	overflow-y: hidden;
+	white-space: nowrap;
+	padding: 0 15px;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	-webkit-overflow-scrolling: touch;
+}
+
+.filter-scroll::-webkit-scrollbar {
+	display: none;
+}
+
+.filter-item {
+	display: inline-block;
+	padding: 8px 16px;
+	margin-right: 10px;
+	text-decoration: none;
+	color: #666;
+	border: 1px solid #ddd;
+	border-radius: 20px;
+	font-size: 14px;
+	font-weight: 500;
+	transition: all 0.3s ease;
+	white-space: nowrap;
+}
+
+.filter-item:hover {
+	background-color: #f0f0f0;
+	border-color: #999;
+}
+
+.filter-item.active {
+	background-color: #ff5a5f;
+	color: white;
+	border-color: #ff5a5f;
+}
+
+.tax-info {
+	font-size: 14px;
+	color: #666;
+	margin-top: 5px;
+	display: none;
+}
+
+.tax-toggle {
+	width: 22%;
+	min-width: 140px;
+	max-width: 220px;
+	padding: 0.5rem 0.75rem;
+	border: 1px solid black;
+	border-radius: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	height: auto;
+	box-sizing: border-box;
+	background: #fff;
+	position: relative;
+	z-index: 1050;
+}
+
+.form-check-reverse.form-switch label.form-check-label {
+	font-size: 0.9rem;
+	white-space: normal;
+	word-break: break-word;
+	line-height: 1.2;
+	text-align: center;
+}
+
+.tax-button {
+	background-color: transparent;
+	border: 1px solid #ddd;
+	padding: 4px 8px;
+	font-size: 12px;
+	color: #666;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 5px;
+	transition: all 0.3s ease;
+}
+
+.tax-button:hover {
+	background-color: #f5f5f5;
+	border-color: #999;
+}
+
+@media only screen and (max-width: 768px) {
+	.tax-info {
+		font-size: 12px;
+		margin-top: 3px;
+	}
+
+	#all-filters {
+		padding: 0 5px;
+	}
+
+	.filter-scrollbar {
+		width: 70%;
+	}
+
+	.tax-toggle {
+		width: 28%;
+		min-width: 120px;
+		max-width: 180px;
+		padding: 0.4rem 0.5rem;
+	}
+
+	.form-check-reverse.form-switch label.form-check-label {
+		font-size: 0.85rem;
+	}
+}
+
+@media only screen and (max-width: 580px) {
+	.tax-info {
+		font-size: 11px;
+		margin-top: 2px;
+		text-align: center;
+	}
+
+	#all-filters {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 10px;
+		padding: 10px;
+		margin-top: 15px;
+	}
+
+	.filter-scrollbar {
+		width: 100%;
+		order: 1;
+	}
+
+	.tax-toggle {
+		width: 100%;
+		max-width: none;
+		min-width: none;
+		order: 2;
+		margin: 0;
+		padding: 0.75rem 1rem;
+	}
+
+	.form-check-reverse.form-switch label.form-check-label {
+		font-size: 0.9rem;
+	}
+}
+
+@media only screen and (max-width: 380px) {
+	.tax-info {
+		font-size: 10px;
+		margin-top: 1px;
+	}
+
+	#all-filters {
+		padding: 8px;
+		gap: 8px;
+	}
+
+	.tax-toggle {
+		padding: 0.6rem 0.8rem;
+	}
+
+	.form-check-reverse.form-switch label.form-check-label {
+		font-size: 0.85rem;
+	}
+
+	.filter-item {
+		font-size: 12px;
+		padding: 6px 12px;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	.tax-info {
+		font-size: 10px;
+		margin-top: 1px;
+	}
+}

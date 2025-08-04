@@ -1,56 +1,59 @@
-<style>
-	.search-btn {
-		background-color: #fe424d;
-		color: white;
-		border-radius: 25px;
-		padding: 0 1rem 0 1rem;
-	}
-	.search-btn:hover {
-		background-color: #fe424d;
-		color: white;
-	}
-	.search-btn i {
-		display: inline;
-		margin-right: 0.5rem;
-	}
-	.search-input {
-		border-radius: 25px;
-		font-size: 1rem;
-		padding: 0.5rem 3rem 0.5rem 3rem;
-		width: 300px;
-	}
-</style>
-
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+<nav class="navbar navbar-expand-md bg-body-light border-bottom fixed-top">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="/listings"
-			><i class="fa-regular fa-compass"></i
-		></a>
+		<a class="navbar-brand" href="/listings">
+			<i class="fa-regular fa-compass"></i>
+		</a>
+
+		<!-- Search form OUTSIDE the collapsible div - always visible -->
+		<form
+			class="d-flex search-form-mobile d-md-none mx-auto order-2"
+			role="search"
+		>
+			<div class="input-group">
+				<input
+					class="form-control search-input"
+					type="search"
+					placeholder="Search"
+					name="search"
+				/>
+				<button class="btn search-btn" type="submit">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</button>
+			</div>
+		</form>
+
 		<button
 			class="navbar-toggler"
 			type="button"
-			data-bs-toggle="collapse"
-			data-bs-target="#navbarNavAltMarkup"
+			aria-controls="navbarNav"
+			aria-expanded="false"
 		>
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+		<!-- Collapsible content for desktop -->
+		<div class="collapse navbar-collapse" id="navbarNav">
 			<div class="navbar-nav">
 				<a class="nav-link" href="/listings">Explore</a>
 			</div>
-			<div class="navbar-nav ms-auto">
-				<form class="d-flex">
+
+			<!-- Desktop Search Form -->
+			<form class="d-none d-md-flex search-form-desktop mx-auto" role="search">
+				<div class="input-group">
 					<input
-						class="form-control me-2 search-input"
+						class="form-control search-input"
 						type="search"
 						placeholder="Search destinations"
+						name="search"
 					/>
-					<button class="search-btn" type="submit">
-						<i class="fa-solid fa-magnifying-glass"></i>Search
+					<button class="btn search-btn" type="submit">
+						<i class="fa-solid fa-magnifying-glass"></i>
+						<span class="search-text">Search</span>
 					</button>
-				</form>
-			</div>
-			<div class="navbar-nav ms-auto">
+				</div>
+			</form>
+
+			<div class="navbar-nav">
 				<a class="nav-link" href="/listings/new">Add New Listing</a>
 				<% if(!currentUser) {%>
 				<a class="nav-link" href="/signup"><b>Sign Up</b></a>

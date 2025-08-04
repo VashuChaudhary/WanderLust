@@ -2,7 +2,8 @@ body {
 	font-family: "Plus Jakarta Sans", sans-serif !important;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	min-height: 100vh;
+	padding-top: 5rem; /* Add padding to prevent content from being hidden behind fixed navbar */
 }
 
 .container {
@@ -13,6 +14,16 @@ body {
 .navbar {
 	height: 5rem;
 	background-color: white;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+	transition: all 0.3s ease;
+	z-index: 2000 !important;
+}
+
+.navbar.scrolled {
+	height: 4rem;
+	background-color: rgba(255, 255, 255, 0.95);
 }
 
 .fa-compass {
