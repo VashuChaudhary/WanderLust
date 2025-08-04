@@ -3,39 +3,42 @@
 <div id="all-filters">
 	<div class="filter-scrollbar">
 		<div class="filter-scroll">
-			<a href="#trending" class="filter-item active">
-				<p><i class="fa-solid fa-fire"></i>&nbsp;Trending</p></a
-			>
-			<a href="#rooms" class="filter-item">
+			<a href="?category=all" class="filter-item <%= currentCategory === 'all' ? 'active' : '' %>">
+				<p><i class="fa-solid fa-border-all"></i>&nbsp;All</p>
+			</a>
+			<a href="?category=trending" class="filter-item <%= currentCategory === 'trending' ? 'active' : '' %>">
+				<p><i class="fa-solid fa-fire"></i>&nbsp;Trending</p>
+			</a>
+			<a href="?category=Rooms" class="filter-item <%= currentCategory === 'Rooms' ? 'active' : '' %>">
 				<p><i class="fa-solid fa-bed"></i>&nbsp;Rooms</p>
 			</a>
-			<a href="#iconic-cities" class="filter-item">
+			<a href="?category=Iconic Cities" class="filter-item <%= currentCategory === 'Iconic Cities' ? 'active' : '' %>">
 				<p><i class="fa-solid fa-mountain-city"></i>&nbsp;Iconic Cities</p>
 			</a>
-			<a href="#mountains" class="filter-item">
+			<a href="?category=Mountains" class="filter-item <%= currentCategory === 'Mountains' ? 'active' : '' %>">
 				<p><i class="fa-solid fa-mountain"></i>&nbsp;Mountains</p>
 			</a>
-			<a href="#castles" class="filter-item">
+			<a href="?category=Castles" class="filter-item <%= currentCategory === 'Castles' ? 'active' : '' %>">
 				<p><i class="fa-solid fa-chess-rook"></i>&nbsp;Castles</p>
 			</a>
-			<a href="#amazing-pools" class="filter-item"
-				><p><i class="fa-solid fa-person-swimming"></i>&nbsp;Amazing Pools</p>
+			<a href="?category=Amazing Pools" class="filter-item <%= currentCategory === 'Amazing Pools' ? 'active' : '' %>">
+				<p><i class="fa-solid fa-person-swimming"></i>&nbsp;Amazing Pools</p>
 			</a>
-			<a href="#camping" class="filter-item"
-				><p><i class="fa-solid fa-tent"></i>&nbsp;Camping</p>
+			<a href="?category=Camping" class="filter-item <%= currentCategory === 'Camping' ? 'active' : '' %>">
+				<p><i class="fa-solid fa-tent"></i>&nbsp;Camping</p>
 			</a>
-			<a href="#farms" class="filter-item"
-				><p><i class="fa-solid fa-tractor"></i>&nbsp;Farms</p></a
-			>
-			<a href="#arctic" class="filter-item"
-				><p><i class="fa-solid fa-snowflake"></i>&nbsp;Arctic</p></a
-			>
-			<a href="#domes" class="filter-item"
-				><p><i class="fa-solid fa-igloo"></i>&nbsp;Domes</p></a
-			>
-			<a href="#boats" class="filter-item"
-				><p><i class="fa-solid fa-sailboat"></i>&nbsp;Boats</p></a
-			>
+			<a href="?category=Farms" class="filter-item <%= currentCategory === 'Farms' ? 'active' : '' %>">
+				<p><i class="fa-solid fa-tractor"></i>&nbsp;Farms</p>
+			</a>
+			<a href="?category=Arctic" class="filter-item <%= currentCategory === 'Arctic' ? 'active' : '' %>">
+				<p><i class="fa-solid fa-snowflake"></i>&nbsp;Arctic</p>
+			</a>
+			<a href="?category=Domes" class="filter-item <%= currentCategory === 'Domes' ? 'active' : '' %>">
+				<p><i class="fa-solid fa-igloo"></i>&nbsp;Domes</p>
+			</a>
+			<a href="?category=Boats" class="filter-item <%= currentCategory === 'Boats' ? 'active' : '' %>">
+				<p><i class="fa-solid fa-sailboat"></i>&nbsp;Boats</p>
+			</a>
 		</div>
 	</div>
 	<div class="tax-toggle">

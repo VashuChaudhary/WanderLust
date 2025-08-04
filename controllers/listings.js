@@ -1,32 +1,40 @@
 const Listing = require("../models/listing");
 
 module.exports.index = async (req, res) => {
-	const { q } = req.query; // Get search query from URL parameters
-	let filter = {};
-	let sort = {};
-
-	if (q && q.trim()) {
-		// Check if search query exists and isn't empty
-		filter = { $text: { $search: q.trim() } };
-		sort = { score: { $meta: "textScore" } };
-	}
-
 	try {
-		const allListings = await Listing.find(
-			filter,
-			q ? { score: { $meta: "textScore" } } : {}
-		).sort(sort);
+        const { q, category } = req.query;
+        let filter = {};
+        let sort = {};
 
-		res.render("listings/index", {
-			allListings,
-			q: q || "", // Pass search query back to template
-		});
-	} catch (error) {
-		console.error("Search error:", error);
-		req.flash("error", "Something went wrong with the search");
-		res.redirect("/listings");
-	}
-};
+        if (category && category !== 'all') {
+            if (category === 'trending') {
+                sort = { price: -1 };
+            } else {
+                filter.category = category;
+            }
+        }
+
+        if (q && q.trim()) {
+            filter.$text = { $search: q.trim() };
+            sort = { score: { $meta: "textScore" } };
+        }
+
+        const allListings = await Listing.find(
+            filter,
+            q ? { score: { $meta: "textScore" } } : {}
+        ).sort(sort);
+
+        res.render("listings/index", {
+            allListings,
+            q: q || "",
+            currentCategory: category || "all"
+        });
+    } catch (err) {
+        console.error("Error fetching listings:", err);
+        req.flash("error", "Failed to fetch listings");
+        res.redirect("/");
+    }
+    };
 
 module.exports.renderNewForm = (req, res) => {
 	res.render("listings/new.ejs");
