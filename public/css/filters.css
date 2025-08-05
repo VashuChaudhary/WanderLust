@@ -16,6 +16,9 @@
 }
 
 .filter-scrollbar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 75%;
 	background-color: #fff;
 	border-bottom: 1px solid #e0e0e0;
@@ -203,5 +206,143 @@
 	.tax-info {
 		font-size: 10px;
 		margin-top: 1px;
+	}
+}
+
+/* Container for filters and arrow */
+.filter-container {
+	padding-right: 10px;
+	display: flex;
+	align-items: center;
+	width: 75%;
+	position: relative;
+	flex-grow: 1;
+}
+
+.filter-scrollbar {
+	flex: 1;
+	background-color: #fff;
+	border-bottom: 1px solid #e0e0e0;
+	padding: 10px 0;
+	position: sticky;
+	top: 0;
+	z-index: 1050;
+	margin-right: 10px; /* Space for arrow */
+}
+
+/* Arrow button */
+.filter-arrow {
+	display: none;
+	padding-left: 10px;
+	width: 40px;
+	height: 40px;
+	background-color: transparent;
+	background: none;
+	border: 1px solid #ddd;
+	border-radius: 50%;
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+	flex-shrink: 0;
+	z-index: 1051;
+}
+
+.filter-arrow:hover {
+	background-color: #f0f0f0;
+	border-color: #999;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.filter-arrow::after {
+	content: "";
+	width: 0;
+	height: 0;
+	border-left: 8px solid #666;
+	border-top: 6px solid transparent;
+	border-bottom: 6px solid transparent;
+}
+
+.filter-arrow.left::after {
+	border-left: none;
+	border-right: 8px solid #666;
+	border-top: 6px solid transparent;
+	border-bottom: 6px solid transparent;
+}
+
+/* Update #all-filters to use flex container */
+#all-filters {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	z-index: 1050;
+	background-color: #fff;
+	margin-top: 10px;
+	padding: 0 10px;
+}
+
+/* Responsive behavior for desktop */
+@media only screen and (min-width: 769px) {
+	.filter-container {
+		width: 75%;
+	}
+
+	/* Show arrow when filters overflow */
+	.filter-scroll.has-overflow + .filter-arrow {
+		display: flex;
+	}
+}
+
+/* Mobile adjustments */
+@media only screen and (max-width: 768px) {
+	.filter-container {
+		width: 70%;
+	}
+
+	.filter-arrow {
+		width: 35px;
+		height: 35px;
+	}
+
+	.filter-arrow::after {
+		border-left-width: 6px;
+		border-top-width: 5px;
+		border-bottom-width: 5px;
+	}
+}
+
+@media only screen and (max-width: 580px) {
+	#all-filters {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 10px;
+		padding: 10px;
+		margin-top: 15px;
+	}
+
+	.filter-container {
+		width: 100%;
+		order: 1;
+	}
+
+	.filter-scrollbar {
+		margin-right: 0;
+	}
+
+	/* Hide arrow on small screens */
+	.filter-arrow {
+		display: none !important;
+	}
+
+	.tax-toggle {
+		width: 100%;
+		max-width: none;
+		min-width: none;
+		order: 2;
+		margin: 0;
+		padding: 0.75rem 1rem;
 	}
 }

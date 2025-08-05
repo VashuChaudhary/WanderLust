@@ -33,41 +33,44 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Get all filter links
-    const filterLinks = document.querySelectorAll('.filter-item');
-    
-    // Get current search query if it exists
-    const searchParams = new URLSearchParams(window.location.search);
-    const currentQuery = searchParams.get('q');
+document.addEventListener("DOMContentLoaded", function () {
+	// Get all filter links
+	const filterLinks = document.querySelectorAll(".filter-item");
 
-    // Add click event listener to each filter link
-    filterLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Get the href and create new URL parameters
-            const href = new URL(this.href, window.location.origin);
-            const params = href.searchParams;
-            
-            // If there's a search query, add it to the category filter
-            if (currentQuery) {
-                params.set('q', currentQuery);
-            }
-            
-            // Navigate to the new URL
-            window.location.href = href.toString();
-        });
-    });
+	// Get current search query if it exists
+	const searchParams = new URLSearchParams(window.location.search);
+	const currentQuery = searchParams.get("q");
 
-    // Set active class based on current category
-    const currentCategory = searchParams.get('category') || 'all';
-    filterLinks.forEach(link => {
-        const linkCategory = new URL(link.href, window.location.origin).searchParams.get('category');
-        if (linkCategory === currentCategory) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
+	// Add click event listener to each filter link
+	filterLinks.forEach((link) => {
+		link.addEventListener("click", function (e) {
+			e.preventDefault();
+
+			// Get the href and create new URL parameters
+			const href = new URL(this.href, window.location.origin);
+			const params = href.searchParams;
+
+			// If there's a search query, add it to the category filter
+			if (currentQuery) {
+				params.set("q", currentQuery);
+			}
+
+			// Navigate to the new URL
+			window.location.href = href.toString();
+		});
+	});
+
+	// Set active class based on current category
+	const currentCategory = searchParams.get("category") || "all";
+	filterLinks.forEach((link) => {
+		const linkCategory = new URL(
+			link.href,
+			window.location.origin
+		).searchParams.get("category");
+		if (linkCategory === currentCategory) {
+			link.classList.add("active");
+		} else {
+			link.classList.remove("active");
+		}
+	});
 });
