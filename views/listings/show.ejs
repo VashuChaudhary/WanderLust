@@ -1,4 +1,6 @@
 <% layout("/layouts/boilerplate") %>
+<script src="/js/categoryManager.js" defer></script>
+
 <div class="row mt-3">
 	<div class="col-8 offset-3"><b> <%= listing.title %> </b> <br /></div>
 	<div class="card col-6 offset-3 show-card listing-card">
@@ -8,6 +10,89 @@
 			alt="listing_image"
 		/>
 		<div class="card-body">
+			<!-- Category Badges with Delete Button -->
+			<div class="categories-container">
+				<strong>Categories: </strong>
+				<div class="categories-list">
+					<% if (Array.isArray(listing.category)) { %> <%
+					listing.category.forEach(function(cat, idx) { %>
+					<span class="category-badge">
+						<a
+							href="/listings?category=<%= encodeURIComponent(cat) %>"
+							style="color: white; text-decoration: none"
+							><%= cat %></a
+						>
+						<% if (currentUser && currentUser._id.equals(listing.owner._id)) {
+						%>
+						<form
+							class="category-delete-form"
+							action="/listings/<%= listing._id %>/category/<%= idx %>?_method=DELETE"
+							method="POST"
+							style="display: inline"
+						>
+							<button
+								type="submit"
+								class="category-delete-btn"
+								title="Remove category"
+							></button>
+						</form>
+						<% } %>
+					</span>
+					<% }) %> <% } else { %>
+					<span class="category-badge">
+						<a
+							href="/listings?category=<%= encodeURIComponent(listing.category) %>"
+							style="color: white; text-decoration: none"
+							><%= listing.category %></a
+						>
+					</span>
+					<% } %>
+				</div>
+				<% if (currentUser && currentUser._id.equals(listing.owner._id)) { %>
+				<div class="mb-auto" style="position: relative; display: inline-block">
+					<button type="button" id="addCategoryBtn" class="btn btn-dark btn-sm">
+						Add Category
+					</button>
+					<form
+						id="addCategoryForm"
+						action="/listings/<%= listing._id %>/category/add-one"
+						method="POST"
+						style="
+							display: none;
+							position: absolute;
+							left: 0;
+							top: 2.5em;
+							min-width: 180px;
+							z-index: 1000;
+							background: white;
+							padding: 10px;
+							border: 1px solid #aa3434;
+							border-radius: 4px;
+							box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+						"
+					>
+						<select
+							name="category"
+							class="form-select form-select-sm mb-1"
+							required
+						>
+							<option value="" disabled selected>Select category</option>
+							<% const cats = ["Rooms", "Iconic Cities", "Mountains", "Castles",
+							"Amazing Pools", "Camping", "Farms", "Arctic", "Domes", "Boats"];
+							%> <% cats.forEach(cat => { %> <% if
+							(!(Array.isArray(listing.category) ? listing.category :
+							[listing.category]).includes(cat)) { %>
+							<option value="<%= cat %>"><%= cat %></option>
+							<% } %> <% }); %>
+						</select>
+						<button type="submit" class="btn btn-outline-dark btn-sm w-100">
+							Add
+						</button>
+					</form>
+				</div>
+				<% } %>
+			</div>
+
 			<p class="card-text">Owned by <%= listing.owner.username %></p>
 			<p class="card-text"><%= listing.description %></p>
 			<p class="card-text">
@@ -133,3 +218,22 @@
 		</div>
 	</div>
 </div>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const btn = document.getElementById("addCategoryBtn");
+		const form = document.getElementById("addCategoryForm");
+		if (btn && form) {
+			btn.addEventListener("click", function () {
+				form.style.display =
+					form.style.display === "none" || form.style.display === ""
+						? "block"
+						: "none";
+			});
+			document.addEventListener("click", function (event) {
+				if (!btn.contains(event.target) && !form.contains(event.target)) {
+					form.style.display = "none";
+				}
+			});
+		}
+	});
+</script>

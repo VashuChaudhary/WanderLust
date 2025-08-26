@@ -1,22 +1,28 @@
 # WanderLust 🌍
+
 > Your Ultimate Travel Stay Companion - Discover, Book, and Experience Unique Stays Worldwide
 
 ## What is WanderLust?
+
 WanderLust is a modern web application that connects travelers with unique accommodations worldwide. Inspired by platforms like Airbnb, it provides a seamless platform for users to discover, list, and book diverse stays - from cozy rooms to luxurious villas, from mountain retreats to beachfront properties.
 
 ## Key Features
-- **User Authentication** 
+
+- **User Authentication**
+
   - Secure signup/login system
   - Protected routes for authenticated users
   - User-specific content management
 
 - **Property Listings**
+
   - Create, view, edit, and delete property listings
   - Rich property details including title, description, location, and pricing
   - Image upload capability with cloud storage
   - Categorized listings (Rooms, Mountains, Castles, etc.)
 
 - **Search & Filters**
+
   - Advanced search functionality
   - Category-based filtering (Iconic Cities, Amazing Pools, Camping, etc.)
   - Dynamic filter interface
@@ -29,7 +35,9 @@ WanderLust is a modern web application that connects travelers with unique accom
   - Author verification
 
 ## How It Works
+
 1. **For Travelers**
+
    - Browse available listings
    - Filter by categories or search specific locations
    - View detailed property information
@@ -43,7 +51,9 @@ WanderLust is a modern web application that connects travelers with unique accom
    - Track reviews and ratings
 
 ## Tech Stack
+
 - **Frontend**
+
   - EJS (Embedded JavaScript templates)
   - Bootstrap 5
   - CSS3
@@ -51,12 +61,14 @@ WanderLust is a modern web application that connects travelers with unique accom
   - Font Awesome Icons
 
 - **Backend**
+
   - Node.js
   - Express.js
   - MongoDB
   - Mongoose ODM
 
 - **Authentication & Security**
+
   - Passport.js
   - Express-session
   - Connect-flash
@@ -66,17 +78,21 @@ WanderLust is a modern web application that connects travelers with unique accom
   - MongoDB Atlas
 
 ## Application Navigation
+
 - **Home Page** (`/listings`)
+
   - Browse all listings
   - Filter by categories
   - Search functionality
 
 - **User Routes**
+
   - Signup (`/signup`)
   - Login (`/login`)
   - Logout (`/logout`)
 
 - **Listing Routes**
+
   - View All Listings (`/listings`)
   - Create New Listing (`/listings/new`)
   - View Single Listing (`/listings/:id`)
@@ -84,5 +100,10 @@ WanderLust is a modern web application that connects travelers with unique accom
   - Delete Listing (`/listings/:id`)
 
 - **Review Routes**
+
   - Add Review (`/listings/:id/reviews`)
   - Delete Review (`/listings/:id/reviews/:reviewId`)
+
+- **Certificate Link**
+
+  - https://www.apnacollege.in/certificate_v2/659e5afc7fa67ec97205fc76/user/64e242207114ea79cd080826

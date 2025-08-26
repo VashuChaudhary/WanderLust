@@ -2,11 +2,7 @@
 <div class="row mt-3">
 	<div class="col-8 offset-2">
 		<h3>Edit your Listing</h3>
-		<form
-			action="/listings/<%=listing._id%>?_method=PUT"
-			method="POST"
-			enctype="multipart/form-data"
-		>
+		<form action="/listings/<%=listing._id%>?_method=PUT" method="POST">
 			<!-- novalidate class="needs-validation" -->
 			<div class="mb-3">
 				<label for="title" class="form-label">Title</label>
@@ -30,15 +26,6 @@
 				></textarea>
 				<div class="invalid-feedback">Please enter a short description.</div>
 			</div>
-
-			<!-- <div class="mb-3">
-				<label for="description" class="form-label">Description</label>
-				<textarea
-					name="listing[description]"
-					value="<%=listing.description%>"
-					class="form-control"
-				></textarea>
-			</div> -->
 
 			<div class="mb-3">
 				Original Listing Image:
