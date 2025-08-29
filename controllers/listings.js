@@ -61,17 +61,16 @@ module.exports.showListing = async (req, res) => {
 module.exports.createListing = async (req, res) => {
 	try {
 		const listingData = req.body.listing;
+		let url = req.file.path;
+		let filename = req.file.filename;
 
-		if (!listingData.image) {
+		if (!url) {
 			listingData.image = {
 				url: "https://images.unsplash.com/photo-1625505826533-5c80aca7d157",
 				filename: "default-listing",
 			};
 		} else {
-			listingData.image = {
-				url: listingData.image,
-				filename: "user-listing",
-			};
+			listingData.image = { url, filename };
 		}
 		if (listingData.category) {
 			if (!Array.isArray(listingData.category)) {
