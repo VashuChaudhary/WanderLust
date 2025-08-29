@@ -1,4 +1,4 @@
-const Listing = require("../models/listing");
+const Listing = require("../models/listing.js");
 
 module.exports.index = async (req, res) => {
 	try {
