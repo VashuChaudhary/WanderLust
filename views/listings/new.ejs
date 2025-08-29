@@ -3,8 +3,8 @@
 	<div class="col-8 offset-2">
 		<br /><br />
 		<h3>Create a New Listing</h3>
-		<form method="POST" action="/listings">
-			<!-- enctype="multipart/form-data" -->
+		<form method="POST" action="/listings" enctype="multipart/form-data">
+			<!-- novalidate class="needs-validation" -->
 			<div class="mb-3">
 				<label for="title" class="form-label">Title</label>
 				<input
@@ -27,7 +27,7 @@
 			</div>
 
 			<div class="mb-3">
-				<label for="image" class="form-label">Image URL</label>
+				<label for="image" class="form-label">Upload Listing Image</label>
 				<!-- <input
 					name="listing[image]"
 					type="url"
@@ -35,7 +35,12 @@
 					placeholder="Enter the URL of your listing image"
 					
 				/> -->
-				<input name="listing[image]" type="file" class="form-control" />
+				<input
+					name="listing[image]"
+					type="file"
+					class="form-control"
+					required
+				/>
 			</div>
 
 			<div class="row">
