@@ -102,7 +102,9 @@ module.exports.renderEditForm = async (req, res) => {
 		res.redirect("/listings");
 	}
 
-	res.render("listings/edit.ejs", { listing });
+	let originalUrl = listing.image.url;
+	originalUrl = originalUrl.replace("/upload", "/upload/w_250/");
+	res.render("listings/edit.ejs", { listing, originalUrl });
 };
 
 module.exports.addCategory = async (req, res) => {
