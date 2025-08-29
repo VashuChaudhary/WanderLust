@@ -107,3 +107,49 @@ WanderLust is a modern web application that connects travelers with unique accom
 - **Certificate Link**
 
   - https://www.apnacollege.in/certificate_v2/659e5afc7fa67ec97205fc76/user/64e242207114ea79cd080826
+
+## How to Set Up Locally
+
+Follow these steps to run WanderLust on your local machine:
+
+1. **Clone the repository**
+
+   ```powershell
+   git clone https://github.com/VashuChaudhary/WanderLust.git
+   cd WanderLust
+   ```
+
+2. **Install dependencies**
+
+   ```powershell
+   npm install
+   ```
+
+3. **Set up environment variables**
+
+   - Create a `.env` file in the root directory.
+   - Add the following variables (replace with your own credentials):
+     ```env
+     ATLAS_DB=your_mongodb_atlas_connection_string
+     CLOUD_NAME=your_cloudinary_cloud_name
+     CLOUD_API_KEY=your_cloudinary_api_key
+     CLOUD_API_SECRET=your_cloudinary_api_secret
+     SECRET=your_session_secret
+     ```
+
+4. **(Optional) Seed the database with sample data**
+
+   ```powershell
+   node ./init/index.js
+   ```
+
+5. **Start the application**
+
+   ```powershell
+   npm start
+   ```
+
+   The app will run on [http://localhost:8080](http://localhost:8080)
+
+6. **Access the app**
+   - Open your browser and go to `http://localhost:8080/listings`
